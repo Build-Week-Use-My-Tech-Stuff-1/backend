@@ -18,6 +18,7 @@ router.get("/", (req, res) => {
 
 //get item by id -- works
 
+
 router.get("/:id", (req, res) => {
   items
     .getItemsByID(req.params.id)
@@ -35,12 +36,14 @@ router.get("/:id", (req, res) => {
 });
 
 //new item ---works
-router.post("/", (req, res) => {
-  const newItem = req.body;
 
-  items
-    .addItem(newItem)
-    .then((itemm) => {
+
+router.post("/", 
+(req, res) => {
+    const newItem = req.body
+    items.addItem(newItem)
+    .then((itemm)=>{
+
       res.status(201).json({
         data: itemm,
         message: "you add item",

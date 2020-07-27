@@ -17,9 +17,7 @@
 //       .then((user) => {
 //         res.status(201).json(user);
 //         const token = generateToken(user)
-//         console.log(token)
-
-        
+//         console.log(token)     
 //       })
 //       .catch((err) => {
 //         res.status(500).json(console.log(err));
@@ -32,6 +30,7 @@
 //   }
 // });
 
+
 // //login
 // router.post("/login", (req, res) => {
 //   let { username, password } = req.body;
@@ -42,9 +41,12 @@
 //       if (user && bcrypt.compareSync(password, user.password)) {
 //         const token = generateToken(user);
 //         console.log(token)
-//         res.status(200).json({
+//        
+//           res.status(200).json({
 //           message: `Welcome ${user.username}!`,
 //           token,
+//           user_id: user.id,
+//           user_name: user.username
 //         });
 //       } else {
 //         res.status(401).json({ message: "Invalid credentials" });
@@ -57,9 +59,6 @@
 //     });
 // });
 
-
-  
-
 // //token generatar
 // function generateToken(user) {
 //   const payload = {
@@ -71,7 +70,6 @@
 //   };
 //   return jwt.sign(payload, secret, options);
 // }
-
 
 // module.exports = router
 
