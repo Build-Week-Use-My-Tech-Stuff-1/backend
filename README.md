@@ -49,6 +49,6 @@ This is the back end documentation
 | Field            | Data Type | Metadata                                                                                               |
 | ---------------- | --------- | ------------------------------------------------------------------------------------------------------ |
 | id               | number    | no need to provide it when creating categories, the database will automatically generate it.           |
-| category_title   | string    | required.                                                                                              |
-| user_id          | number    | required, must be the id of an existing user.                                                          |
+| item_title   | string    | required.                                                                                              |
+| item_id          | number    | required, must be the id of an existing user.                                                          |
 
