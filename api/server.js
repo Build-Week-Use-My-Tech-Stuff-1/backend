@@ -5,7 +5,7 @@ const helmet = require("helmet")
 const authRouter = require("../auth/authRouter")
 const itemsRouter = require("../items/itemRouter")
 const userRouter = require("../users/userRouter")
-// const authenticate = require("../auth/restricted")
+const authenticate = require("../auth/restricted")
 
 const server = express()
 
@@ -14,7 +14,9 @@ server.use(express.json())
 server.use(helmet())
 
 server.use("/api/auth",authRouter)
-server.use("/api/items",itemsRouter)
+server.use("/api/items"
+,authenticate()
+,itemsRouter)
 server.use("/api/users",userRouter)
 
 server.get("/", async (req, res) => {

@@ -18,10 +18,14 @@ function getAllItems(){
     return db("items")
 }
 
-function getItemsByID(id) {
-    return db("items")
-      .where({ id })
-      .first();
+// function getItemsByID(id) {
+//     return db("items")
+//       .where({ id })
+//       .first();
+//   }
+
+  function getItemsByID(id) {
+    return db('items').where({ id: Number(id) });
   }
 
   function addItem(item) {

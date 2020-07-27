@@ -5,10 +5,10 @@ const restricted = require("../auth/restricted");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
 
-//get all items
+//get all items --works
 router.get("/", (req, res) => {
   items
-    .get()
+    .getAllItems()
     .then((itemA) => {
       res.status(200).json(itemA);
     })
@@ -17,89 +17,114 @@ router.get("/", (req, res) => {
     });
 });
 
-//get item by id
-router.get("/id", (req, res) => {
-  try {
-    const itemAll = items.getItemsByID(req.params.id);
-    const itemMessages = items.getMessagesbyRentalItemID;
-    res.status(200).json(itemAll, itemMessages);
-  } catch {
-    res.status(500).json(console.log(err));
-  }
-});
+//get item by id -- works
 
-//new item
-router.post("/", restricted, async (req, res) => {
-  const newItem = req.body;
+    router.get("/:id", (req, res) => {
+        items.getItemsByID(req.params.id)
+        
+            .then((itemid) => {
+              res.status(200).json(
+               {   
+                data:itemid,
 
-  if (newItem.name) {
-    items
-      .insert(newItem)
-      .then((newItem) => {
-        if (newItem) {
-          db.get().then((newi) => {
-            res.status(201).json(newi);
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ message: "cannot add" });
-      });
-  }
-});
-
-//update item
-router.put("/:id", restricted, async (req, res) => {
-  const itemid = req.res.id;
-  const updated = req.body;
-
-  if (updated) {
-    items
-      .updateItem(itemid, updated)
-      .then((updated) => {
-        if (updated) {
-          items
-            .get()
-            .then((it) => {
-              res.status(200).json(it);
+                message:"you got item"
+              }
+                );
             })
             .catch((err) => {
-              res.status(500).json({ message: "cannot get items" });
+              res.status(500).json(console.log(err));
             });
-        } else {
-          res.status(404).json({
-            message: "item id not found",
-          });
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(console.log(err));
-      });
-  }
-});
+        });
 
-//remove item
-router.delete("/:id", restricted, async (req, res) => {
-  const itemid = req.params.id;
-  items
-    .removeItem(itemid)
-    .then((item1) => {
-      if (item1) {
-        items.get().then((item1) => {
-          res.status(200).json(item1);
-        });
-      } else {
-        res.status(404).json({
-          message: "item not found",
-        });
-      }
+
+
+
+
+//new item ---works
+router.post("/", 
+(req, res) => {
+
+
+    const newItem = req.body
+   
+  
+    items.addItem(newItem)
+    .then((itemm)=>{
+      res.status(201).json({
+        data:itemm,
+        message:"you add item"
+      })
+  
+      console.log(itemm)    
     })
     .catch((err) => {
-      res.status(500).json({ message: "cannot be removed" });
-      
+      console.log({ err });
+      res.status(500).json({
+        message: "you no add item ",
+      });
     });
-});
+  
+  
+  });
+
+//update ---works
+router.put("/:id", 
+(req, res) => {
+
+
+    const updateItem = req.body
+   
+  
+    items.addItem(updateItem)
+    .then((itemu)=>{
+      res.status(201).json({
+        data:itemu,
+        message:"you update item"
+      })
+  
+      console.log(itemm)    
+    })
+    .catch((err) => {
+      console.log({ err });
+      res.status(500).json({
+        message: "you no update item ",
+      });
+    });
+  
+  
+  });
+
+
+
+
+//delte item works
+router.delete("/:id", 
+(req, res) => {
+
+
+    const delItem = req.body
+   
+  
+    items.removeItem(delItem)
+    .then((itemd)=>{
+      res.status(201).json({
+        data:itemd,
+        message:"you delete item"
+      })
+  
+      console.log(itemd)    
+    })
+    .catch((err) => {
+      console.log({ err });
+      res.status(500).json({
+        message: "you no delete item ",
+      });
+    });
+  
+  
+  });
+
+
 
 //message to item listing about renting item
 router.post("/:id", restricted, async (req, res) => {
@@ -107,7 +132,7 @@ router.post("/:id", restricted, async (req, res) => {
   const { content, user_id } = req.body;
 
   if (content) {
-    db.comment(item_id, user_id, content)
+    items.addMessageToRentItem(item_id, user_id, content)
       .then((success) => {
         res.status(201).json(success);
       })
