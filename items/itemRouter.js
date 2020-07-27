@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 //get item by id -- works
 
 
-router.get("/:id", (req, res) => {
+router.get("/single/:id", (req, res) => {
   items
     .getItemsByID(req.params.id)
 
@@ -103,7 +103,7 @@ router.delete("/:id", (req, res) => {
     });
 });
 
-//message to item listing about renting item
+//message to item listing about renting item --- works
 
 router.post("/:id", (req, res) => {
   const item_id = req.params.id;
@@ -128,8 +128,8 @@ router.post("/:id", (req, res) => {
 });
 
 
-//get all messages
-router.get("/:mess", (req, res) => {
+//get all messages --works
+router.get("/:mess/", (req, res) => {
     items
       .getAllMessages()
       .then((mes) => {
