@@ -137,3 +137,26 @@ update item
 //       res.status(500).json(console.log(err));
 //     });
 // });
+
+
+
+//message to item listing about renting item
+router.post("/:id", restricted, async (req, res) => {
+  const item_id = req.params.id;
+  const { content, user_id } = req.body;
+
+  if (content) {
+    items.addMessageToRentItem(item_id, user_id, content)
+      .then((success) => {
+        res.status(201).json(success);
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ message: "cannot send message " });
+      });
+  } else {
+    res.status(400).json({
+      message: "cannot be empty",
+    });
+  }
+});

@@ -8,7 +8,7 @@ module.exports = {
     removeItem,
     addMessageToRentItem,
     removeMessageToRentItem,
-   
+    getAllMessages,
     getMessagesbyRentalItemID
 
 }
@@ -47,12 +47,17 @@ function getAllItems(){
     
   
   function addMessageToRentItem(item_id, user_id, content) {
-    return db("messages").insert({
+    return db("messages","items").insert({
       item_id: item_id,
       user_id: user_id,
       content: content
     });
+   
   }
+
+//   function addMessageToRentItem(message) {
+//     return getAllItems().insert(message);
+//   }
 
   function removeMessageToRentItem(message) {
       return getAllItems()
@@ -60,7 +65,11 @@ function getAllItems(){
       .del()
   }
 
-function getMessagesbyRentalItemID(){
+function getAllMessages(){
+    return db("messages")
+}
+
+  function getMessagesbyRentalItemID(){
     return db("messages")
     .select(["*"])
     .from("messages")
