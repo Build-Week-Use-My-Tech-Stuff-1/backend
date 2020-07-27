@@ -45,6 +45,8 @@
 //           res.status(200).json({
 //           message: `Welcome ${user.username}!`,
 //           token,
+//           user_id: user.id,
+//           user_name: user.username
 //         });
 //       } else {
 //         res.status(401).json({ message: "Invalid credentials" });
@@ -57,9 +59,6 @@
 //     });
 // });
 
-
-  
-
 // //token generatar
 // function generateToken(user) {
 //   const payload = {
@@ -71,7 +70,6 @@
 //   };
 //   return jwt.sign(payload, secret, options);
 // }
-
 
 // module.exports = router
 

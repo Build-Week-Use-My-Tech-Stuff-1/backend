@@ -7,15 +7,11 @@ module.exports={
 
 }
 
-
-
-
-
 // function addUser(user){
 //     return db("users")
 //     .insert(user)
 //     .returning("id")
-//     .then(id0=>{
+//     .then(id=>{
 //         return findUserByID(id0[0])
 //     })
 // }
@@ -30,10 +26,23 @@ module.exports={
 // function findBy(filter) {
 //     return db("users").where(filter);
 //   }
-function addUser(user) {
-    return db('users').insert(user)
-  }
+
+// function addUser(user) {
+//     return db('users').insert(user)
+//   }
   
+
+function addUser(user) {
+  return db("users")
+    .insert(user)
+    .returning("id")
+    .then(ids => {
+      return findUserByID(ids[0]);
+    });
+}
+
+
+
   function findBy(filter) {
     return db('users')
       .where(filter)
