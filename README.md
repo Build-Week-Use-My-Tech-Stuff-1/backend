@@ -36,4 +36,19 @@ This is the back end documentation
 |        |                               | it responds with an array of the specific item ID. If the user is not logged                 |
 |        |                               | in it responds with the correct status code.                                                 |
 
-                                                |
+## User schema
+
+| Field            | Data Type | Metadata                                                                                               |
+| ---------------- | --------- | ------------------------------------------------------------------------------------------------------ |
+| id               | number    | no need to provide it when creating users, the database will generate it                               |
+| username         | string    | unique, required.                                                                                      |
+| password         | string    | required.                                                                                              |
+
+## Item schema
+
+| Field            | Data Type | Metadata                                                                                               |
+| ---------------- | --------- | ------------------------------------------------------------------------------------------------------ |
+| id               | number    | no need to provide it when creating categories, the database will automatically generate it.           |
+| category_title   | string    | required.                                                                                              |
+| user_id          | number    | required, must be the id of an existing user.                                                          |
+
