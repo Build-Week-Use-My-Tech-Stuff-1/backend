@@ -2,7 +2,7 @@ const express =require("express")
 const db = require("./userModel")
 const router = express.Router()
 
-//get all users
+//get all users --works
 router.get("/", (req,res)=>{
     db.getAllUsers()
     .then(users=>{
@@ -14,7 +14,7 @@ router.get("/", (req,res)=>{
     })
 })
 
-//user by id
+//user by id ---works
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     db.findUserByID(id)

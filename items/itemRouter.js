@@ -1,4 +1,3 @@
-
 const express = require("express");
 const items = require("./itemModel");
 const restricted = require("../auth/restricted");
@@ -19,35 +18,38 @@ router.get("/", (req, res) => {
 
 //get item by id -- works
 
-    router.get("/:id", (req, res) => {
-        items.getItemsByID(req.params.id)
-        
-            .then((itemid) => {
-              res.status(200).json(
-               {   
-                data:itemid,
 
-                message:"you got item"
-              }
-                );
-            })
-            .catch((err) => {
-              res.status(500).json(console.log(err));
-            });
-        });
+router.get("/:id", (req, res) => {
+  items
+    .getItemsByID(req.params.id)
+
+    .then((itemid) => {
+      res.status(200).json({
+        data: itemid,
+
+        message: "you got item",
+      });
+    })
+    .catch((err) => {
+      res.status(500).json(console.log(err));
+    });
+});
 
 //new item ---works
+
+
 router.post("/", 
 (req, res) => {
     const newItem = req.body
     items.addItem(newItem)
     .then((itemm)=>{
+
       res.status(201).json({
-        data:itemm,
-        message:"you add item"
-      })
-  
-      console.log(itemm)    
+        data: itemm,
+        message: "you add item",
+      });
+
+      console.log(itemm);
     })
     .catch((err) => {
       console.log({ err });
@@ -55,26 +57,21 @@ router.post("/",
         message: "you no add item ",
       });
     });
-  
-  
-  });
+});
 
 //update ---works
-router.put("/:id", 
-(req, res) => {
+router.put("/:id", (req, res) => {
+  const updateItem = req.body;
 
-
-    const updateItem = req.body
-   
-  
-    items.addItem(updateItem)
-    .then((itemu)=>{
+  items
+    .addItem(updateItem)
+    .then((itemu) => {
       res.status(201).json({
-        data:itemu,
-        message:"you update item"
-      })
-  
-      console.log(itemm)    
+        data: itemu,
+        message: "you update item",
+      });
+
+      console.log(itemm);
     })
     .catch((err) => {
       console.log({ err });
@@ -82,29 +79,21 @@ router.put("/:id",
         message: "you no update item ",
       });
     });
-  
-  
-  });
+});
 
+//delte item says it works still in data
+router.delete("/:id", (req, res) => {
+  const delItem = req.body;
 
-
-
-//delte item works
-router.delete("/:id", 
-(req, res) => {
-
-
-    const delItem = req.body
-   
-  
-    items.removeItem(delItem)
-    .then((itemd)=>{
+  items
+    .removeItem(delItem)
+    .then((itemd) => {
       res.status(201).json({
-        data:itemd,
-        message:"you delete item"
-      })
-  
-      console.log(itemd)    
+        data: itemd,
+        message: "you delete item",
+      });
+
+      console.log(itemd);
     })
     .catch((err) => {
       console.log({ err });
@@ -112,52 +101,67 @@ router.delete("/:id",
         message: "you no delete item ",
       });
     });
-  
-  
-  });
-
-
+});
 
 //message to item listing about renting item
-router.post("/:id", restricted, async (req, res) => {
+
+router.post("/:id", (req, res) => {
   const item_id = req.params.id;
   const { content, user_id } = req.body;
 
-  if (content) {
-    items.addMessageToRentItem(item_id, user_id, content)
-      .then((success) => {
-        res.status(201).json(success);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ message: "cannot send message " });
+  items
+    .addMessageToRentItem(item_id, user_id, content)
+    .then((messagesent) => {
+      res.status(201).json({
+        data:messagesent,
+        message: "you sent this ",
       });
-  } else {
-    res.status(400).json({
-      message: "cannot be empty",
+
+      console.log(messagesent);
+    })
+    .catch((err) => {
+      console.log({ err });
+      res.status(500).json({
+        message: "you no sent  ",
+      });
     });
-  }
 });
 
-//remove message to item listing
-router.delete("/:id", restricted, async (req, res) => {
-  try {
-    const emessage = await items.getMessagesbyRentalItemID(req.params.id);
-    const verifiedToken = jwt.verify(req.headers.authorization, "the secret");
-    if (verifiedToken.subject == emessage[0].user_id) {
-      const message = await items.removeMessageToRentItem(req.params.id);
-      res.status(200).json(message);
-    } else {
-      res.status(500).json({
-        message: "unauthorized",
+
+//get all messages
+router.get("/:mess", (req, res) => {
+    items
+      .getAllMessages()
+      .then((mes) => {
+        res.status(200).json(mes);
+      })
+      .catch((err) => {
+        res.status(500).json(console.log(err));
       });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      message: "cannot remove",
-    });
-  }
-});
+  });
+
+//remove message to item listing
+// router.delete("/:id", restricted, async (req, res) => {
+//   try {
+//     const emessage = await items.getMessagesbyRentalItemID(req.params.id);
+//     const verifiedToken = jwt.verify(req.headers.authorization, "the secret");
+//     if (verifiedToken.subject == emessage[0].user_id) {
+//       const messagea = await items.removeMessageToRentItem(req.params.id);
+//       res.status(200).json(messagea,{message:"rid message"});
+      
+//     } else {
+//       res.status(500).json({
+//         message: "unauthorized",
+//       });
+//     }
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json({
+//       message: "cannot remove",
+//     });
+//   }
+// });
+
+
 
 module.exports = router;

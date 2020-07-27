@@ -7,17 +7,9 @@ auth
 
 }
 
-items test 1
-{
-    " name":"asdf ",
-    "category ":"re ",
-    "description ":"fd ",
-    " picture":"x ",
-    "cost ":" 43",
-    "availability ":true
-}
+
   
-  items test 2
+  items test 
 
 
 {
@@ -32,8 +24,18 @@ items test 1
 
 
 
+message to rent
 
+
+ {
+      "id": 2,
+      "item_id": 2,
+      "user_id": 2,
+	 		"content":"asdfasf"
+    }
 
 {
     "":"",
 }
+
+
