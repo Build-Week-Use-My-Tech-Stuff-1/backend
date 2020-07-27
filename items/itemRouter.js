@@ -36,18 +36,10 @@ router.get("/", (req, res) => {
             });
         });
 
-
-
-
-
 //new item ---works
 router.post("/", 
 (req, res) => {
-
-
     const newItem = req.body
-   
-  
     items.addItem(newItem)
     .then((itemm)=>{
       res.status(201).json({
