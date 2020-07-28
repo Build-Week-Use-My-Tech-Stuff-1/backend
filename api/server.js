@@ -18,7 +18,7 @@ server.use(helmet())
 server.use("/api/auth",authRouter)
 server.use("/api/authR",rentauthRouter)
 server.use("/api/items"
-,authenticate()
+// ,authenticate()
 ,itemsRouter)
 server.use("/api/users",userRouter)
 server.use("/api/Renterusers",RenterUser)
