@@ -19,22 +19,22 @@ router.get("/", (req, res) => {
 
 //get item by id -- works
 
-    router.get("/:id", (req, res) => {
-        items.getItemsByID(req.params.id)
-        
-            .then((itemid) => {
-              res.status(200).json(
-               {   
-                data:itemid,
+router.get("/:id", (req, res) => {
+    items.getItemsByID(req.params.id)
+    
+        .then((itemid) => {
+          res.status(200).json(
+            {   
+            data:itemid,
 
-                message:"you got item"
-              }
-                );
-            })
-            .catch((err) => {
-              res.status(500).json(console.log(err));
-            });
+            message:"you got item"
+          }
+            );
+        })
+        .catch((err) => {
+          res.status(500).json(console.log(err));
         });
+    });
 
 //new item ---works
 router.post("/", 
@@ -46,27 +46,20 @@ router.post("/",
         data:itemm,
         message:"you add item"
       })
-  
-      console.log(itemm)    
+        console.log(itemm)    
     })
     .catch((err) => {
       console.log({ err });
       res.status(500).json({
         message: "you no add item ",
       });
-    });
-  
-  
+    }); 
   });
 
 //update ---works
 router.put("/:id", 
 (req, res) => {
-
-
     const updateItem = req.body
-   
-  
     items.addItem(updateItem)
     .then((itemu)=>{
       res.status(201).json({
@@ -86,17 +79,10 @@ router.put("/:id",
   
   });
 
-
-
-
 //delte item works
 router.delete("/:id", 
 (req, res) => {
-
-
     const delItem = req.body
-   
-  
     items.removeItem(delItem)
     .then((itemd)=>{
       res.status(201).json({
@@ -112,11 +98,7 @@ router.delete("/:id",
         message: "you no delete item ",
       });
     });
-  
-  
   });
-
-
 
 //message to item listing about renting item
 router.post("/:id", restricted, async (req, res) => {
@@ -134,7 +116,7 @@ router.post("/:id", restricted, async (req, res) => {
       });
   } else {
     res.status(400).json({
-      message: "cannot be empty",
+      message: "message cannot be empty",
     });
   }
 });

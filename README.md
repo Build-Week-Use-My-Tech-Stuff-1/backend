@@ -9,8 +9,8 @@ This is the back end documentation
 
 | Method | Endpoint                      | Description                                                                                  |
 | ------ | ----------------------------  | -------------------------------------------------------------------------------------------- |
-| GET    | /api/auth/register            | Creates a `user` using the information sent inside the `body` of the request. password is    |
-|        |                               | hashed before saving the user to the database.                                               |
+| POST    | /api/auth/register            | Creates a `user` using the information sent inside the `body` of the request. password is    |
+
 | POST   | /api/auth/login               | Uses the credentials sent inside the `body` to authenticate the user. On successful login    |
 |        |                               | creates a new JWT with the user id as the subject and sends it back to the client. If login  |
 |        |                               | fails, respond with the correct status code.                                                 |
