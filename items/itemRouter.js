@@ -61,10 +61,11 @@ router.post("/",
 
 //update ---works
 router.put("/:id", (req, res) => {
-  const updateItem = req.body;
+  const updateItemA = req.body;
+  const idU = req.params.id
 
   items
-    .addItem(updateItem)
+    .updateItem(idU,updateItemA)
     .then((itemu) => {
       res.status(201).json({
         data: itemu,
