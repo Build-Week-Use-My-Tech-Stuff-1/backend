@@ -10,50 +10,39 @@ This is the back end documentation
 
 Auth
 ------------------------------------------------------------------------------
-POST  api/auth/register        
- creates user
+POST  api/auth/register      ----- creates user
  ------------------------------------------------------------------------------
 
-POST   api/auth/login           
-  logs you in
+POST   api/auth/login                       -----logs you in
 ------------------------------------------------------------------------------
 ******************************************************************************
 
 
 Users
 ------------------------------------------------------------------------------
-GET    api/users                
-  gets all users
+GET    api/users                ----- gets all users
 ------------------------------------------------------------------------------
 
-GET    api/users/id               
-get user by id   id will be a number
+GET    api/users/id             ----- get user by id   id will be a number
 ------------------------------------------------------------------------------
 ******************************************************************************
 
 
 Item
 ------------------------------------------------------------------------------
-GET    api/items                     
-  get all items
+GET    api/items                             ----- get all items
 ------------------------------------------------------------------------------
-GET    api/single/id                  
- gets item by by   id will be a number
+GET    api/single/id               -----  gets item by ID  ----- id will be a number
 ------------------------------------------------------------------------------
-POST   api/items                       
-adds a new item
+POST   api/items                           ----adds a new item
 ------------------------------------------------------------------------------
-PUT    api/items/id                    
-updates item
+PUT    api/items/id                           ----- updates item
 ------------------------------------------------------------------------------
-DELETE api/items/id                    
-deletes an item   id will be a number
+DELETE api/items/id                      ----- deletes an item  ----- id will be a number
 ------------------------------------------------------------------------------
-POST   api/items/id                   
- adds message to rent item 
+POST   api/items/id                ----- adds message to rent item 
 ------------------------------------------------------------------------------
-GET    api/items/mess                 
- gets all item messages 
+GET    api/items/mess         ----- gets all item messages 
 ------------------------------------------------------------------------------
 ******************************************************************************
 

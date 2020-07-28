@@ -140,27 +140,6 @@ router.get("/:mess/", (req, res) => {
       });
   });
 
-//remove message to item listing
-// router.delete("/:id", restricted, async (req, res) => {
-//   try {
-//     const emessage = await items.getMessagesbyRentalItemID(req.params.id);
-//     const verifiedToken = jwt.verify(req.headers.authorization, "the secret");
-//     if (verifiedToken.subject == emessage[0].user_id) {
-//       const messagea = await items.removeMessageToRentItem(req.params.id);
-//       res.status(200).json(messagea,{message:"rid message"});
-      
-//     } else {
-//       res.status(500).json({
-//         message: "unauthorized",
-//       });
-//     }
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json({
-//       message: "cannot remove",
-//     });
-//   }
-// });
 
 
 
