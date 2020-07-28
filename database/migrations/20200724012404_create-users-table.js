@@ -7,6 +7,12 @@ exports.up = function(knex) {
       table.string("password",128).notNullable()
       table.string("email",128).notNullable()
   })
+  .createTable("Renterusers",table=>{
+    table.increments()
+    table.string("username",128).notNullable()
+    table.string("password",128).notNullable()
+    table.string("email",128).notNullable()
+})
   .createTable("items",table=>{
     table.increments();
     table.string("name").notNullable()

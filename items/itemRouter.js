@@ -82,12 +82,13 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//delte item says it works still in data
+//delete item --works
 router.delete("/:id", (req, res) => {
-  const delItem = req.body;
+  
+  const id = req.params.id;
 
   items
-    .removeItem(delItem)
+    .removeItem(id)
     .then((itemd) => {
       res.status(201).json({
         data: itemd,
