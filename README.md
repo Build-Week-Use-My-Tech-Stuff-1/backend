@@ -6,6 +6,35 @@
 This is the back end documentation 
 
 ## Endpoints
+******updated direct endpoint info
+Auth
+---------------------------------------------------------------------|
+POST   api/auth/register       creates user
+POST   api/auth/login          logs you in
+---------------------------------------------------------------------|
+
+Users
+---------------------------------------------------------------------|
+GET    api/users               gets all users
+GET    api/users/id            get user by id   id will be a number
+---------------------------------------------------------------------|
+
+Item
+---------------------------------------------------------------------|
+GET    api/items               get all items
+GET    api/single/id           gets item by by   id will be a number
+POST   api/items               adds a new item
+PUT    api/items/id            updates item
+DELETE api/items/id            deletes an item   id will be a number
+POST   api/items/id            adds message to rent item 
+GET    api/items/mess          gets all item messages 
+---------------------------------------------------------------------|
+
+
+
+
+****JWT AND HEADER ENDPOINT DETAIL 
+endpoints below are old but detail is correct
 
 | Method | Endpoint                      | Description                                                                                  |
 | ------ | ----------------------------  | -------------------------------------------------------------------------------------------- |
@@ -36,6 +65,8 @@ This is the back end documentation
 |        |                               | it responds with an array of the specific item ID. If the user is not logged                 |
 |        |                               | in it responds with the correct status code.                                                 |
 
+
+
 ## User schema
 
 | Field            | Data Type | Metadata                                                                                               |
@@ -51,4 +82,7 @@ This is the back end documentation
 | id               | number    | no need to provide it when creating categories, the database will automatically generate it.           |
 | item_title   | string    | required.                                                                                              |
 | item_id          | number    | required, must be the id of an existing user.                                                          |
+
+
+
 
