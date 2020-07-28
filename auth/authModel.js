@@ -7,30 +7,7 @@ module.exports={
 
 }
 
-// function addUser(user){
-//     return db("users")
-//     .insert(user)
-//     .returning("id")
-//     .then(id=>{
-//         return findUserByID(id0[0])
-//     })
-// }
 
-
-// async function addUser(user) {
-//     const [id] = await db("users").insert(user);
-//     return findBy(id);
-//   }
-  
-
-// function findBy(filter) {
-//     return db("users").where(filter);
-//   }
-
-// function addUser(user) {
-//     return db('users').insert(user)
-//   }
-  
 
 function addUser(user) {
   return db("users")
