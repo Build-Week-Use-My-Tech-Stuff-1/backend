@@ -46,7 +46,7 @@ router.post("/",
 
       res.status(201).json({
         data: itemm,
-        message: "you add item",
+        message: "you added item",
       });
 
       console.log(itemm);
@@ -54,7 +54,7 @@ router.post("/",
     .catch((err) => {
       console.log({ err });
       res.status(500).json({
-        message: "you no add item ",
+        message: "you failed to add item ",
       });
     });
 });
@@ -69,7 +69,7 @@ router.put("/:id", (req, res) => {
     .then((itemu) => {
       res.status(201).json({
         data: itemu,
-        message: "you update item",
+        message: "you updated item",
       });
 
       console.log(itemm);
@@ -77,7 +77,7 @@ router.put("/:id", (req, res) => {
     .catch((err) => {
       console.log({ err });
       res.status(500).json({
-        message: "you no update item ",
+        message: "you didnt update item ",
       });
     });
 });
@@ -92,7 +92,7 @@ router.delete("/:id", (req, res) => {
     .then((itemd) => {
       res.status(201).json({
         data: itemd,
-        message: "you delete item",
+        message: "you deleted item",
       });
 
       console.log(itemd);
@@ -100,7 +100,7 @@ router.delete("/:id", (req, res) => {
     .catch((err) => {
       console.log({ err });
       res.status(500).json({
-        message: "you no delete item ",
+        message: "you didnt delete item ",
       });
     });
 });
@@ -124,7 +124,7 @@ router.post("/:id", (req, res) => {
     .catch((err) => {
       console.log({ err });
       res.status(500).json({
-        message: "you no sent  ",
+        message: "you failed to send  ",
       });
     });
 });
