@@ -30,7 +30,7 @@ const token = newToken(uuser)
   .catch((err) => {
     console.log({ err });
     res.status(500).json({
-      message: "you no registerR ",
+      message: "you have not registerR ",
     });
   });
 

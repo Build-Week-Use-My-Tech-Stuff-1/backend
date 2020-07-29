@@ -22,7 +22,7 @@ router.post('/register', (req, res) => {
   .then((userr)=>{
     res.status(201).json({
       data:userr,
-      message:"you registrated"
+      message:"you registerd"
     })
 const token = newToken(uuser)
     console.log(token)    
@@ -30,7 +30,7 @@ const token = newToken(uuser)
   .catch((err) => {
     console.log({ err });
     res.status(500).json({
-      message: "you no register ",
+      message: "you didnot register ",
     });
   });
 
