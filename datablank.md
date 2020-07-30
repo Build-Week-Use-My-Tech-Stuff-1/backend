@@ -1,20 +1,21 @@
 
-auth
+example auth
 {
 	"username":"aq",
 	"password":"aq",
 	"email":"a@a.com"
+    "renter?":true
 
 }
 
 
   
-  items test 
+  items example 
 
 
 {
     " name":"asdf ",
-        "user_id":"",
+        "user_id":1,
     "category ":"re ",
     "description ":"fd ",
     " picture":"x ",
@@ -24,14 +25,14 @@ auth
 
 
 
-message to rent
+message to rent example
 
 
  {
       "id": 2,
       "item_id": 2,
       "user_id": 2,
-	 		"content":"asdfasf"
+	"content":"asdfasf"
     }
 
 {
