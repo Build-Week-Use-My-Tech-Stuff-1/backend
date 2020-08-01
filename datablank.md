@@ -7,7 +7,13 @@ example auth
     "renter?":true
 
 }
+renter auth
 
+  {
+    "username": "123",
+    "password": "123",
+    "email": "123@123.com"
+  }
 
   
   items example 

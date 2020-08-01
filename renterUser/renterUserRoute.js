@@ -1,9 +1,10 @@
 const express =require("express")
 const db = require("./renterUserModel")
 const router = express.Router()
+const restricted = require("../auth/restricted");
 
 //get all users --works
-router.get("/", (req,res)=>{
+router.get("/", restricted(),(req,res)=>{
     db.getAllUsersR()
     .then(users=>{
         res.status(200).json(users)
