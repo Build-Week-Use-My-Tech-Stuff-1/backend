@@ -19,7 +19,7 @@ router.get("/", (req, res) => {
 //get item by id -- works
 
 
-router.get("/single/:id", (req, res) => {
+router.get("/single/:id",(req, res) => {
   items
     .getItemsByID(req.params.id)
 
