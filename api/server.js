@@ -12,10 +12,7 @@ const RenterUser = require("../renterUser/renterUserRoute")
 
 const server = express()
 
-server.use(cors({
-  credentials: true,
-  origin: "http://localhost:5000",
-}))
+server.use(cors())
 server.use(express.json())
 server.use(helmet())
 server.use(cookieParser())
